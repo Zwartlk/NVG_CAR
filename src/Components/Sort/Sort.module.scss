@@ -1,0 +1,19 @@
+@import "~@fluentui/react/dist/sass/_References.scss";
+
+.container * {
+    font-size: 1.2rem;
+}
+
+.container {
+    .block {
+        .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .sort {
+            width: 100%;
+        }
+    }
+}
+

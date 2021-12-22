@@ -1,0 +1,92 @@
+@import "~@fluentui/react/dist/sass/_References.scss";
+
+
+ .container{
+      display: flex;
+      margin: auto;
+      
+      .mobile_panel {
+         display: none;
+      }
+
+      .infor{
+         width: 73%;
+      }
+
+      .sortfilter {
+         width: 27%;
+         padding: 0 30px;
+      }
+ }
+
+@media only screen and (max-width: 1024px) {
+   .container{
+      display: flex;
+      width: 90%;
+      flex-direction: column;
+      margin: auto;
+      margin-top: -60px;
+
+      .mobile_panel {
+         display: inline-block;
+         margin-bottom: 10px;
+      }
+ 
+      .infor{
+         width: 100%;
+         order: 2;
+      }
+ 
+      .sortfilter {
+         display: flex;
+         order: 1;
+         margin-left: auto;
+         padding: 0px;
+         gap: 10px;
+         width: fit-content;
+
+         .filter {
+            display: none;
+         }
+
+         .mobile_panel {
+            button {
+               min-width: 0px;
+               border: 1px solid #dedbfd;
+            }
+            span {
+               font-weight: 500;
+               font-size: 1.2rem;
+               color: #6558f5;
+            }
+         }
+      }
+  }
+}
+ /* iPad Portrait */
+@media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+}
+
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+}
+
+@media only screen and (max-width: 748px) {
+   .container{
+      margin-top: unset;
+
+      .sortfilter {
+         display: flex;
+         justify-content: space-between;
+         width: 100%;
+
+         .mobile_panel {
+            :global{
+               .ms-Button-label {
+                  display: none;
+               } 
+            }
+         }
+      }
+  }
+}

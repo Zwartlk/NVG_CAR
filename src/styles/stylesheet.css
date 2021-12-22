@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:200,300,400,500,600,700,800,900&display=swap');
+
+*{
+    font-family: 'Roboto Condensed', sans-serif;
+    color:#293845;
+}
+
+
+i[data-icon-name="FavoriteStar"] {
+    color: #6558f5 ;
+}
+.ms-RatingStar-front {
+    color: #6558f5 ;
+}
+.ms-RatingStar-back {
+    color: #6558f5 ;
+}
+.ms-Button,.ms-ComboBox-Input,.ms-ComboBox::after ,.ms-TextField-fieldGroup,.ms-Dropdown-title,.ms-Dropdown{
+    height: 47px;
+    border-radius: 5px;
+    align-items: center;
+    border-color: #eaeef2;
+}
+.ms-Dropdown-title,.ms-Dropdown-caretDownWrapper,.ms-Dropdown-caretDown {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+.ms-Checkbox-checkbox{
+    border-radius: 5px;
+    border-color: #eaeef2;
+}

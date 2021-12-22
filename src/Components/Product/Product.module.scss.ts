@@ -1,0 +1,31 @@
+require("./Product.module.css");
+const styles = {
+    container: 'container_34de0fb7',
+    block: 'block_34de0fb7',
+    buttonNav: 'buttonNav_34de0fb7',
+    infor: 'infor_34de0fb7',
+    title_heart: 'title_heart_34de0fb7',
+    heart: 'heart_34de0fb7',
+    spectify: 'spectify_34de0fb7',
+    calendar: 'calendar_34de0fb7',
+    numberBoard: 'numberBoard_34de0fb7',
+    distance: 'distance_34de0fb7',
+    description: 'description_34de0fb7',
+    description_value: 'description_34de0fb7',
+    equipment_value: 'equipment_34de0fb7',
+    svgdistance: 'svgdistance_34de0fb7',
+    equipment: 'equipment_34de0fb7',
+    seller: 'seller_34de0fb7',
+    label: 'label_34de0fb7',
+    company: 'company_34de0fb7',
+    contact: 'contact_34de0fb7',
+    imageContain: 'imageContain_34de0fb7',
+    image_flexColumn: 'image_flexColumn_34de0fb7',
+    image_large: 'image_large_34de0fb7',
+    image_large_view: 'image_large_view_34de0fb7',
+    image_small: 'image_small_34de0fb7',
+    image_small_view: 'image_small_view_34de0fb7',
+    image_button: 'image_button_34de0fb7',
+};
+
+export default styles;

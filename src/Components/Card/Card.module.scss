@@ -1,0 +1,199 @@
+@import "~@fluentui/react/dist/sass/_References.scss";
+
+.container {
+    border: 2px solid #eaeef2;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+
+    .cardinner {
+        display: flex;
+
+        .sliderContain {
+            width: 40%;
+
+            .slider {
+                position: relative;
+                width: 100%;  
+                padding-bottom: 75%;
+            }
+        }
+        
+        .infor {
+            width: 60%;  
+            margin-left: 30px;
+            display: grid;
+            grid-template-rows: minmax(60px, 1fr) 2fr minmax(10px,0.6fr);
+            
+            .title_heart {
+                a {
+                    text-decoration: none;
+                }
+                display: flex;       
+                line-height: 0;
+                justify-content: space-between;
+                align-items: baseline;
+                h1 {
+                    font-size: 2rem;
+                }
+            }
+
+            .spectify {
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-auto-rows: 1fr;
+                align-items: center;
+                // justify-content: start;
+
+                .calendar {
+                    display: flex;
+                    align-items: center;
+    
+                    span {
+                        font-size: 1.3rem;
+                        margin-left: 20px;
+                    }
+                }
+    
+                .distance {
+                    display: flex;
+                    align-items: center;
+
+                    .svgdistance {
+                        height: 45px;
+                        width:  45px;
+                    }
+                    span {
+                        font-size: 1.3rem;
+                    }
+                }
+    
+                .numberBoard {
+                    h2 {
+                        font-size: 1.8rem;
+                        line-height: 0;
+                    }
+                }
+    
+                .rate {
+                    line-height: 0;
+                    i {
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+         
+            .create {
+                display: flex;
+                justify-content: end;
+                align-items: end;
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 748px) {
+    .container {
+        border: 2px solid #eaeef2;
+        border-radius: 5px;
+        padding: 15px;
+        margin-bottom: 20px;
+    
+        .cardinner {
+            display: flex;
+            flex-direction: column;
+
+            .sliderContain {
+                width: 100%;  
+                .slider {
+                    position: relative;
+                    padding-bottom: 56.25%;
+                }
+            }
+            
+            .title_heart {
+                display: flex;       
+                white-space: nowrap;
+                line-height: 0;
+                justify-content: space-between;
+                align-items: center;
+                a {
+                    text-decoration: none;
+                }
+                h1 {
+                    font-size: 1.5rem;
+                }
+                i {
+                    font-size: 1.5rem;
+                }
+                button {
+                    height: auto;
+                }
+            }
+
+            .infor {
+                width: 100%;
+                margin: auto;
+                grid-template-rows: unset;
+
+                .spectify {
+                    display: grid;
+                    grid-template-areas: "fl fl fl fr fr"
+                                         "sr sr sr .   .";
+                    .numberBoard {
+                        grid-area: fl;
+                        order: 1;
+                        h2 {
+                            font-size: 1.5rem;
+                            font-weight: 500;
+                            line-height: 0;
+                        }
+                    }
+    
+                    .rate {
+                        grid-area: fr;
+                        order: 2;
+                        line-height: 0;
+                        justify-content: end;
+                        display: flex;
+                        i {
+                            font-size: 1.2rem;
+                        }
+                    }
+
+                    .calendar {
+                        grid-area: sr;
+                        order: 3;
+
+                        &:after {
+                            content: '|';
+                            margin-left: 10px;
+                        }
+                        span {
+                            font-size: 1.3rem;
+                            margin-left: 0px;
+                        }
+                    }
+        
+                    .distance {
+                        grid-area: sr;
+                        order: 4;
+        
+                        span {
+                            font-size: 1.3rem;
+                            margin-left: auto;
+                        }
+                    }
+                }
+             
+                .create {
+                    display: flex;
+                    justify-content: end;
+                    align-items: end;
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+ }

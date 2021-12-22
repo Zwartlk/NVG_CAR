@@ -1,0 +1,22 @@
+@import "~@fluentui/react/dist/sass/_References.scss";
+
+.main {
+    width: 1300px;
+    margin: auto;
+    min-width: 400px;
+
+    .logotitle {
+        padding: 20px 0px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .main {
+       width: 100%;
+
+       .logotitle {
+            width: 90%;
+            margin: auto;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+@import "~@fluentui/react/dist/sass/_References.scss";
+
+.container * {
+    font-size: 1.2rem;
+}
+
+.container {
+    .block {
+        padding-top: 2rem;
+        .label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .rate {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 1rem;
+        }
+
+        .registation {
+            display: flex;
+            gap: 20px;
+        }
+
+        .price {
+            display: flex;
+            gap: 20px;
+        }
+    }
+}
