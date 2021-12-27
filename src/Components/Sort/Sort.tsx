@@ -1,4 +1,4 @@
-import { Dropdown, DropdownMenuItemType, Icon, IDropdownOption, initializeIcons, Stack } from "@fluentui/react";
+import { Dropdown, DropdownMenuItemType, IDropdownOption, initializeIcons } from "@fluentui/react";
 import _ from "lodash";
 import React from "react";
 import styles from './Sort.module.scss';
@@ -25,27 +25,16 @@ const exampleOptions: IDropdownOption[] = [
 ];
 
 export interface ISortStates {
-
 }
 
 export default class Sort extends React.Component<any, ISortStates> {
     constructor(props: any) {
         super(props);
-        this.setState({
-
-        })
-    }
-
-    componentWillMount() {
-        window.addEventListener("resize", () => {
-            const screen = window.matchMedia("(max-width: 748px)").matches;
-            this.setState({ screen });
-        });
+        this.setState({});
     }
 
     public render(): React.ReactElement<any> {
         const dropdownStyles = { dropdown: { width: '100%', minWidth: "160px" } };
-        const screen = window.matchMedia("(max-width: 1024px)").matches;
 
         const sort = (option: any, list: any) => {
             let op = option.key.split('_');
@@ -54,14 +43,13 @@ export default class Sort extends React.Component<any, ISortStates> {
 
         return <div className={styles.container}>
             <div className={styles.block}>
-                <span className={styles.label} style={{ display: screen ? "none" : "block" }}>
+                <span className={styles.label} style={{ display: this.props.screen.Is1024 || this.props.screen.Is748 ? "none" : "block" }}>
                     Sort
                 </span>
                 <div className={styles.sort}>
                     <Dropdown
-                        placeholder={screen ? "Sort" : "Default"}
-                        ariaLabel="Custom dropdown example"
-                        onChange={(e, option) => { sort(option, this.props.items.cards) }}
+                        placeholder={this.props.screen.Is748 ? "Sort" : "Default"}
+                        onChange={(e, option) => { sort(option, this.props.items.sorted) }}
                         styles={dropdownStyles}
                         options={exampleOptions}
                     />

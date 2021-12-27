@@ -2,8 +2,8 @@ import { CARDS_KEYACTION } from "../types/nvgInit.type";
 
 export function handleCards(state = {
     isFetching: false,
-    cards: {},
-    sorted: {},
+    cards: [],
+    sorted: [],
     error: {}
 }, action: any) {
     switch (action.type) {

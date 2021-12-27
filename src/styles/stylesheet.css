@@ -5,16 +5,6 @@
     color:#293845;
 }
 
-
-i[data-icon-name="FavoriteStar"] {
-    color: #6558f5 ;
-}
-.ms-RatingStar-front {
-    color: #6558f5 ;
-}
-.ms-RatingStar-back {
-    color: #6558f5 ;
-}
 .ms-Button,.ms-ComboBox-Input,.ms-ComboBox::after ,.ms-TextField-fieldGroup,.ms-Dropdown-title,.ms-Dropdown{
     height: 47px;
     border-radius: 5px;

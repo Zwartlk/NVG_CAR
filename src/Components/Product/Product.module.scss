@@ -6,6 +6,10 @@
     padding: 15px;
     margin-bottom: 20px;
 
+    img {
+        border-radius: 4px;
+    }
+
     .buttonNav {
         button{
             height: 32px;
@@ -44,11 +48,16 @@
                 flex-direction: column;
 
                 .image_large {
+                    width: 100%;
                     .image_large_view {
                         width: 100%;
 
+                        span {
+                            width: 100%;
+                        }
                         img {
                             width: 100%;
+                            aspect-ratio: 5/ 3;
                         }
                     }
                 }
@@ -74,6 +83,7 @@
 
                         img {
                             width: 100%;
+                            aspect-ratio: 5/ 3;
                         }
                     }
                 }
@@ -188,8 +198,6 @@
                 .image_flexColumn {
                     display: grid;
                     gap: 3%;
-                    // grid-auto-rows: 25%;
-                    // margin-bottom: -25%;
                     grid-auto-columns: 1fr;
                     grid-template-areas: "il im"
                                          "il im";
@@ -205,8 +213,7 @@
                         }
                     }
     
-                    .image_small {     
-                        $gap: 5%;    
+                    .image_small {
                         grid-area: im;  
                         display: grid;
                         grid-template-columns: 1fr 1fr;
@@ -216,7 +223,7 @@
                         -ms-overflow-style: none;  /* Internet Explorer 10+ */
                         width: 100%;// - $gap/2; /* gap/2 */
                         gap: 3%;
-                        height: 28vw;
+                        height: 27.5vw;
     
                         &::-webkit-scrollbar { /* WebKit */
                             width: 0;
@@ -224,11 +231,11 @@
                         }
     
                         .image_small_view{
-                            width: 100%;
+                            width: 90%;
                             flex: unset;
     
                             img {
-                                width: 100%;
+                                width: 110%;
                             }
                         }
                     }
@@ -423,11 +430,13 @@
                 
     
                 .spectify {
-                    order: 1;
-                    display: grid;
-                    grid-template-columns: auto auto;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
     
                     .numberBoard {
+                        order: 1;
+
                         h2 {
                             font-size: 2.4rem;
                             font-weight: 600;
@@ -436,6 +445,8 @@
                     }
     
                     .calendar {
+                        order: 2;
+
                         display: flex;
                         align-items: center;
     
@@ -446,6 +457,8 @@
                     }
         
                     .distance {
+                        order: 3;
+
                         align-items: center;
                         display: flex;
     

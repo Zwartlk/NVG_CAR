@@ -49,6 +49,24 @@
             display: none;
          }
 
+         .filter_panel {
+            background-color: rgb(255, 255, 255);
+            box-shadow: rgb(0 0 0 / 22%) 0px 25.6px 57.6px 0px, rgb(0 0 0 / 18%) 0px 4.8px 14.4px 0px;
+            pointer-events: auto;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden auto;
+            inset: 0px 0px 0px auto;
+            padding: 50px;
+            z-index: 2;
+            transition:1s ease-out;
+
+            animation-duration: 0.367s;
+            animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+            animation-fill-mode: both;
+         }
+
          .mobile_panel {
             button {
                min-width: 0px;

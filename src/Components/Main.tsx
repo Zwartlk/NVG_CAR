@@ -1,13 +1,13 @@
 import React from "react";
 import Title from './Title'
-import { HashRouter, Link, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 import { Provider } from "react-redux";
 import Home from "./Home/Home";
 import Product from "./Product/Product";
 import styles from './Main.module.scss';
-import * as _ from 'lodash'
 import { IScreenDetect, ScreenDetect } from "../utilities/constanst/Ienum";
 import Store from "../utilities/redux/store/store";
+import * as ROUTES from '../utilities/constanst/routes';
 
 export interface IMainProps {
     description: string;
@@ -15,7 +15,6 @@ export interface IMainProps {
 export interface IMainStates {
     screen: IScreenDetect;
 }
-
 
 export default class Main extends React.Component<any, IMainStates>  {
     private store;
@@ -27,10 +26,12 @@ export default class Main extends React.Component<any, IMainStates>  {
     componentWillMount() {
         const screenDetect = () => {
             let screen: IScreenDetect = {};
-            if (window.matchMedia("(max-width: 748px)").matches) {
+            if (window.matchMedia(ScreenDetect.Is748).matches) {
                 screen.Is748 = true;
-            } else if (window.matchMedia("(max-width: 1024px)").matches) {
+            } else if (window.matchMedia(ScreenDetect.Is1024).matches) {
                 screen.Is1024 = true;
+            } else {
+                screen.Is1980 = true;
             }
             return screen;
         }
@@ -51,8 +52,8 @@ export default class Main extends React.Component<any, IMainStates>  {
                     <Title className={styles.logotitle} ></Title>
                     <HashRouter>
                         <Switch>
-                            <Route exact path="/" render={(props: any) => <Home {...this.state} {...props} />} />
-                            <Route path="/Product/:id" render={(props: any) => <Product {...this.state} {...props} />} />
+                            <Route exact path={ROUTES.HOME} render={(props: any) => <Home {...this.state} {...props} />} />
+                            <Route path={ROUTES.VIEW_PRODUCT} render={(props: any) => <Product {...this.state} {...props} />} />
                         </Switch>
                     </HashRouter>
                 </Provider>

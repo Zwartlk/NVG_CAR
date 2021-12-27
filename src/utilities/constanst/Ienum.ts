@@ -1,6 +1,6 @@
 export enum ScreenDetect {
-    Is1024 = 1,
-    Is748 = 2
+    Is1024 = "(max-width: 1024px)",
+    Is748 = "(max-width: 748px)"
 }
 
 export enum ImageSize {
@@ -12,5 +12,6 @@ export enum ImageSize {
 
 export interface IScreenDetect {
     Is1024?: Boolean,
-    Is748?: Boolean
+    Is748?: Boolean,
+    Is1980?: Boolean,
 }

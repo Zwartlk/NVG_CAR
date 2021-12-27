@@ -22,16 +22,23 @@ class Home extends React.Component<any, IHomeStates> {
     }
 
     private _openPanel = () => {
+        document.body.style.overflow = "hidden";
         this.setState({ isOpen: true })
     }
 
     private _closePanel = () => {
+        document.body.style.overflow = "auto";
         this.setState({ isOpen: false })
     }
 
     componentWillMount() {
         const { dispatch } = this.props;
         dispatch(fetchCards());
+        window.addEventListener("resize", () => {
+            if (this.props.screen.Is1980) {
+                this.setState({ isOpen: false })
+            }
+        });
     }
 
     handlefilter = (data: any) => {
@@ -45,6 +52,7 @@ class Home extends React.Component<any, IHomeStates> {
                 root: { color: "#6558f5" }
             }
         };
+        const clearIcon: IIconProps = { iconName: 'Clear' };
         const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
         return (
@@ -65,20 +73,16 @@ class Home extends React.Component<any, IHomeStates> {
                         />
                     </div>
                     <div className={Classname.sort}> <Sort {...this.props} call={this.handlefilter} /></div>
-                    <div className={Classname.filter}>  <Filter {...this.props} call={this.handlefilter} /></div>
+                    <DefaultButton
+                        style={{ display: this.state.isOpen ? "block" : "none", zIndex: 4, border: 0, top: 0, position: "fixed", right: 0 }}
+                        toggle
+                        text={''}
+                        iconProps={clearIcon}
+                        onClick={this._closePanel}
+                        allowDisabledFocus
+                    />
+                    <div className={this.state.isOpen ? Classname.filter_panel : Classname.filter}>  <Filter {...this.props} call={this.handlefilter} /></div>
                 </div>
-
-
-                <Panel
-                    isOpen={this.state.isOpen}
-                    isHiddenOnDismiss={true}
-                    onDismiss={this._closePanel}
-                    isLightDismiss
-                    type={PanelType.custom}
-                    customWidth={PanelType.custom || PanelType.customNear ? '400px' : undefined}
-                >
-                    <Filter></Filter>
-                </Panel>
             </div>
         )
     }

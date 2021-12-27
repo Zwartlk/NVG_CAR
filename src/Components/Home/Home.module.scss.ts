@@ -5,7 +5,9 @@ const styles = {
     sortfilter: 'sortfilter_34de0fb7',
     sort: 'sort_34de0fb7',
     filter: 'filter_34de0fb7',
-    mobile_panel: 'mobile_panel_34de0fb7'
+    filter_panel: 'filter_panel_34de0fb7',
+    mobile_panel: 'mobile_panel_34de0fb7',
+    button_clear: 'button_clear_34de0fb7'
 };
 
 export default styles;

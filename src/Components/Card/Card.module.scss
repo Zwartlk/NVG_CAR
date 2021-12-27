@@ -15,7 +15,6 @@
             .slider {
                 position: relative;
                 width: 100%;  
-                padding-bottom: 75%;
             }
         }
         
@@ -26,15 +25,23 @@
             grid-template-rows: minmax(60px, 1fr) 2fr minmax(10px,0.6fr);
             
             .title_heart {
-                a {
-                    text-decoration: none;
-                }
-                display: flex;       
-                line-height: 0;
+                display: flex;    
                 justify-content: space-between;
                 align-items: baseline;
+
+                a {
+                    text-decoration: none;
+                    display: grid;
+                }               
+
                 h1 {
                     font-size: 2rem;
+                    margin: 0px;
+                    -webkit-margin-before: 0px;
+                    -webkit-margin-after: 0px;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                 }
             }
 
@@ -108,14 +115,12 @@
                 width: 100%;  
                 .slider {
                     position: relative;
-                    padding-bottom: 56.25%;
                 }
             }
             
             .title_heart {
                 display: flex;       
                 white-space: nowrap;
-                line-height: 0;
                 justify-content: space-between;
                 align-items: center;
                 a {

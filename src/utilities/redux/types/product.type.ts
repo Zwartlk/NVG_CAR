@@ -1,3 +1,4 @@
 export const PRODUCT_KEYACTION = {
-    GET: 'GET_KEYACTION'
+    GET: 'GET_KEYACTION',
+    ERROR: 'ERROR'
 };

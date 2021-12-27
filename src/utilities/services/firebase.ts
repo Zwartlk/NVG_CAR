@@ -26,12 +26,13 @@ class Firebase {
 
     public async getProduct(id: any): Promise<any> {
         return new Promise((resolve, reject) => {
-            const starCountRef = ref(this.db, 'items/' + id);
+            const starCountRef = ref(this.db, 'items/' + (parseInt(id) - 1));
 
             return onValue(starCountRef, (snapshot) => {
                 const data = snapshot.val();
-                return resolve(data);
-            });
+                if (data) return resolve(data);
+                return reject("Not found product!");
+            })
         });
     }
 
