@@ -256,7 +256,7 @@ class Product extends React.Component<any, IProductStates> {
                     {
                         addSkeleton(
                             <div className={styles.equipment_value}>
-                                {item.equipment && item.equipment.map((e: any) => { return <div>{e}</div> })}
+                                {item.equipment && _.orderBy(item.equipment, undefined, 'asc').map((e: any) => { return <div>{e}</div> })}
                             </div>, 3)
                     }
                 </div>

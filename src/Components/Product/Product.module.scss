@@ -435,6 +435,9 @@
     
                     .numberBoard {
                         order: 1;
+                        width: 100%;
+                        display: flex;
+                        justify-content: end;
 
                         h2 {
                             font-size: 2.4rem;
