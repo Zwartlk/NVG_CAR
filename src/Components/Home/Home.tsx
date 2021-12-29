@@ -32,6 +32,7 @@ class Home extends React.Component<any, IHomeStates> {
     }
 
     componentWillMount() {
+        document.title = 'My awesome car'
         const { dispatch } = this.props;
         dispatch(fetchCards());
         window.addEventListener("resize", () => {

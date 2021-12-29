@@ -134,6 +134,7 @@ class Product extends React.Component<any, IProductStates> {
         };
 
         let item = this.props.item.product ? this.props.item.product : {};
+        document.title = `${item.make} ${item.model} ${item.version}`;
 
         const addSkeleton = (div: any, count: number, heigth?: any) => {
             return !_.isEmpty(item) ? div : <Skeleton height={heigth} count={count} />

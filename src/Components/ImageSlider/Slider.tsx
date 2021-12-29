@@ -3,14 +3,17 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import './Slider.scss';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import _ from 'lodash';
-import ImageStatic from '../../utilities/assecs/static';
 import { DefaultButton } from '@fluentui/react';
 import { ImageSize } from '../../utilities/constanst/Ienum';
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 export interface IHomeStates {
     activeIndex: number;
     left: number;
+    isOpen: boolean;
     slider: any;
+    photoIndex: number;
 }
 
 export default class Slider extends React.Component<any, IHomeStates> {
@@ -19,7 +22,9 @@ export default class Slider extends React.Component<any, IHomeStates> {
         this.state = {
             slider: [],
             activeIndex: 1,
-            left: 0
+            left: 0,
+            isOpen: false,
+            photoIndex: 0
         };
     }
 
@@ -53,11 +58,13 @@ export default class Slider extends React.Component<any, IHomeStates> {
     }
 
     public render(): React.ReactElement<any> {
+        const { photoIndex, isOpen } = this.state;
         const style = {
             left: this.state.left,
             width: "100%",
             height: "100%"
         };
+        const images = this.props.images.map((item: any) => { return item[ImageSize.large] });
 
         return (
             <div>
@@ -70,9 +77,10 @@ export default class Slider extends React.Component<any, IHomeStates> {
                                     className={index + 1 === this.state.activeIndex ? 'slider-item' : 'hide'}
                                     wrapperClassName="slider"
                                     delayTime={0}
-                                    style={{ position: position, left: this.state.left }}
+                                    style={{ position: position, left: this.state.left, cursor: "pointer" }}
                                     height={style.height}
                                     src={item[ImageSize.medium]}
+                                    onClick={() => this.setState({ isOpen: true })}
                                     width={style.width} />
                             )
                         })
@@ -93,7 +101,25 @@ export default class Slider extends React.Component<any, IHomeStates> {
                         }
                     </ul>
                 </div>
-            </div >
+                {isOpen && (
+                    <Lightbox
+                        mainSrc={images[photoIndex]}
+                        nextSrc={images[(photoIndex + 1) % images.length]}
+                        prevSrc={images[(photoIndex + images.length - 1) % images.length]}
+                        onCloseRequest={() => this.setState({ isOpen: false })}
+                        onMovePrevRequest={() =>
+                            this.setState({
+                                photoIndex: (photoIndex + images.length - 1) % images.length,
+                            })
+                        }
+                        onMoveNextRequest={() =>
+                            this.setState({
+                                photoIndex: (photoIndex + 1) % images.length,
+                            })
+                        }
+                    />
+                )}
+            </div>
         );
     }
 }
