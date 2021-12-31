@@ -7,16 +7,16 @@ import { connect } from "react-redux";
 import moment from "moment";
 import Skeleton from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
-import _, { debounce } from "lodash";
 import { getProduct } from "../../utilities/redux/actions/product.action";
 import { ImageSize } from "../../utilities/constanst/Ienum";
-import ImageStatic from "../../utilities/assecs/static";
+import LoadingBar from 'react-top-loading-bar'
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import road from '../../utilities/assecs/svg/road.svg'
 import * as Util from "../../utilities/helper/util";
+import _ from "lodash";
 
 // Initialize icons in case this example uses them
 initializeIcons();
@@ -46,10 +46,12 @@ export interface IProductStates {
 var executed = false;
 class Product extends React.Component<any, IProductStates> {
     private _ref: any;
+    private _refBar: any;
     constructor(props: any) {
         super(props);
         this.setState({ indexImage: 0 });
         this._ref = React.createRef();
+        this._refBar = React.createRef();
     }
 
     componentWillMount() {
@@ -65,6 +67,9 @@ class Product extends React.Component<any, IProductStates> {
         }
     }
 
+    componentDidMount() {
+        this.grabToMove();
+    }
 
     private grabToMove = () => {
         const slider = this._ref.current;
@@ -94,10 +99,6 @@ class Product extends React.Component<any, IProductStates> {
             slider.scrollLeft = scrollLeft - walk;
             console.log(walk);
         });
-    }
-
-    componentDidMount() {
-        this.grabToMove();
     }
 
     public render(): React.ReactElement<IProductProps> {
@@ -134,7 +135,7 @@ class Product extends React.Component<any, IProductStates> {
         };
 
         let item = this.props.item.product ? this.props.item.product : {};
-        document.title = `${item.make} ${item.model} ${item.version}`;
+        document.title = item.make ? `${item.make} ${item.model} ${item.version}` : 'My awesome car';
 
         const addSkeleton = (div: any, count: number, heigth?: any) => {
             return !_.isEmpty(item) ? div : <Skeleton height={heigth} count={count} />
@@ -159,9 +160,13 @@ class Product extends React.Component<any, IProductStates> {
                 };
             })();
             showError();
+        } else {
+            if (this._refBar.current)
+                this._refBar.current.complete();
         }
 
         return <div className={styles.container}>
+            <LoadingBar color="#6558f5" ref={this._refBar} shadow={true} />
             <div className={styles.buttonNav}>
                 <Link key={'id'} to={`/Product/${item.id == 1 ? 9 : item.id - 1}`} style={{ display: "contents" }}>
                     <DefaultButton

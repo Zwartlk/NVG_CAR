@@ -1,6 +1,7 @@
 import { DefaultButton, IIconProps, Panel, PanelType } from "@fluentui/react";
 import React from "react";
 import { connect } from "react-redux";
+import LoadingBar from "react-top-loading-bar";
 import { fetchCards, fetchFilter } from "../../utilities/redux/actions/cards.actions";
 import Cards from "../Cards/Cards";
 import Filter from "../Filter/Filter";
@@ -13,12 +14,14 @@ export interface IHomeStates {
 }
 
 class Home extends React.Component<any, IHomeStates> {
+    private _refBar: any;
     constructor(props: any) {
         super(props);
         this.state = {
             isOpen: false,
             data: this.props.items.cards
         };
+        this._refBar = React.createRef();
     }
 
     private _openPanel = () => {
@@ -32,7 +35,7 @@ class Home extends React.Component<any, IHomeStates> {
     }
 
     componentWillMount() {
-        document.title = 'My awesome car'
+        document.title = 'My awesome car';
         const { dispatch } = this.props;
         dispatch(fetchCards());
         window.addEventListener("resize", () => {
@@ -56,8 +59,12 @@ class Home extends React.Component<any, IHomeStates> {
         const clearIcon: IIconProps = { iconName: 'Clear' };
         const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
+        if (this._refBar.current)
+            this._refBar.current.complete();
+
         return (
             <div className={Classname.container} >
+                <LoadingBar color="#6558f5" ref={this._refBar} shadow={true} />
 
                 <div className={Classname.infor}>
                     <Cards  {...this.props} />
