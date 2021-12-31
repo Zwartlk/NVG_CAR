@@ -27,13 +27,13 @@
 (Prefered implementation of image requirements in `<picture>` with source queries and attributes)
 - Application can be non-intercatvie but must load and display content with JavaScript disabled (Server Side Rendering). -> NON
 - `html > head > title` must change its text during navigation to a title provided by api. -> OK
-- Every fetch request should trigger YouTube-like loading bar indicator. -> NON
+- Every fetch request should trigger YouTube-like loading bar indicator. -> OK
 - Navigation patterns:
   - Load data AND navigate -> Using skeloton
 - Application should use state management -> Redux
 - Should handle api reponse errors, and showing a popup/toast notification. -> OK if not found product
 - Some other functionality is available on wireframe only.  -> OK
-- Client configuration should be stored in environment variables.  -> NON, khong co gi de store
+- Client configuration should be stored in environment variables.  -> config.ts
 5. API
 - Must be RESTful.
 - On every 7th request must return 500 status code response. -> NON, Chua lam
